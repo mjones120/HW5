@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+   <!--/6. Do the following:
+//a. add a button with an id, when that button is clicked, change the button’s text
+//b. add a list with several list items, if any list item is clicked, change all list items color to blue
+//c. add a div that contains a second button element. When that button element is clicked, append a paragraph element with some text to the containing div after the second button.
+--> 
+    <head>
+        <meta charset="UTF-8">
+        <title>Homework 5 - JS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <button id="textChange">Click here</button>
+        <ul id="itemsList">
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+        </ul>
+    
+        <div id="appendButton">
+            <button id="append">Click here to append text</button>
+        </div>
+        <script>
+            //change the text when the button is clicked
+            document.getElementById("textChange").addEventListener("click", function(){
+                this.textContent ='You clicked here';
+            });
+            const itemsInList=document.querySelectorAll(("#itemsList li"));
+            itemsInList.forEach(function(item)
+            {
+                item.addEventListener("click", function(){
+                    itemsInList.forEach(function(li)
+                    {
+                        li.style.color="blue";
+                    });
+                });
+            });
+            //append paragraph element
+            document.getElementById("append").addEventListener("click", function(){
+                const newParagraph = document.createElement("p");
+                newParagraph.textContent = "Paragraph appended.";
+                document.getElementById("appendButton").appendChild(newParagraph);
+            });
+        </script>
+    </body>
+</html>
